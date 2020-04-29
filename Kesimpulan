@@ -5,3 +5,10 @@ print("Jumlah yang tidak terinfeksi = "+str(200-fix_total_positif)+" orang")
 print("\n Positif per hari")
 for i in range(0,len(array_total_positif)):
     print("Jumlah Positif hari ke-"+str(i+1)+" adalah "+str(array_total_positif[i])+" orang")
+
+
+
+HTML(animgerak.to_jshtml())
+
+
+HTML(animgrafik.to_jshtml())
