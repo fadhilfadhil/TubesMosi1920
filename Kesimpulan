@@ -1,0 +1,7 @@
+print("Kesimpulan berdasarkan simulasi")
+print("Waktu yang dibutuhkan untuk sembuh total dan tidak ada pasien terinfeksi = "+str(total_hari-1)+" hari")
+print("Total jumlah positif = "+str(fix_total_positif)+" orang")
+print("Jumlah yang tidak terinfeksi = "+str(200-fix_total_positif)+" orang")
+print("\n Positif per hari")
+for i in range(0,len(array_total_positif)):
+    print("Jumlah Positif hari ke-"+str(i+1)+" adalah "+str(array_total_positif[i])+" orang")
