@@ -67,3 +67,41 @@ class human:
                 pos_y = pos_y+(2*ylimit)+1
         self.pos.append([pos_x,pos_y])
         self.array_warna.append(self.warna)
+
+    array_human = []
+        for i in range(0,10):
+            array_human.append(human("positif"))
+        for h in range(0,190):
+            array_human.append(human("sehat"))
+    
+    while total_positif>0:
+    total_hari += 1
+    array_total_hari.append(total_hari)
+    array_total_sembuh.append(total_sembuh)
+
+    for i in range(0,200):
+        array_human[i].update_pos()
+        if(array_human[i].status=="positif"):
+                array_human[i].tambah_hari()
+
+    for a in range(0,200):
+        for b in range(0,200):
+            if(array_human[a].pos[-1][0]==array_human[b].pos[-1][0]):
+                if(array_human[a].pos[-1][1]==array_human[b].pos[-1][1]):
+                    if(array_human[a].status=="positif" or array_human[b].status=="positif"):
+                        if(array_human[a].status=="sehat" or array_human[b].status=="sehat"):
+                            array_human[a].positif()
+                            array_human[b].positif()
+                            total_positif +=1
+                            fix_total_positif += 1
+
+    array_total_positif.append(total_positif)
+        
+total_hari += 1
+array_total_hari.append(total_hari)
+array_total_sembuh.append(total_sembuh)
+
+for i in range(0,200):
+    array_human[i].update_pos()
+    if(array_human[i].status=="positif"):
+                array_human[i].tambah_hari()
