@@ -1,0 +1,69 @@
+import numpy
+from matplotlib import pyplot as plt
+from matplotlib import animation
+from IPython.display import HTML
+
+limitborder = 10
+xlimit = limitborder   #batas sisi border x
+ylimit = limitborder   #batas sisi border y
+total_hari = 1
+total_positif = 10
+fix_total_positif = total_positif
+total_sembuh = 0
+array_total_hari = [1]
+array_total_positif = [10]
+array_total_sembuh = [0]
+
+
+
+
+class human:
+    def __init__(self,status):
+        self.status = status
+        self.pos = [[numpy.random.randint(-1*limitborder,limitborder),numpy.random.randint(-1*limitborder,limitborder)]]
+        self.hari_sakit = 0
+        self.warna = "green"
+        self.array_warna = []
+        if(self.status=="positif"):
+            self.warna = "red"
+        self.array_warna.append(self.warna)
+
+    def positif(self):
+        self.status = "positif"
+        self.warna = "red"
+        if(self.hari_sakit==0):
+            self.hari_sakit = 1
+
+    def tambah_hari(self):
+        self.hari_sakit+=1
+        if(self.hari_sakit>10):
+            self.status = "sembuh"
+            self.warna = "blue"
+            global total_sembuh
+            global total_positif
+            total_sembuh+=1
+            total_positif-=1
+
+    
+    def update_pos(self):  #fungsi Update Posisi
+        nomor = numpy.random.randint(0,4)
+        pos_x = self.pos[-1][0]
+        pos_y = self.pos[-1][1]
+        if(nomor==0):    #jika randoman 0 maka arahnya ke kanan
+            pos_x = pos_x+1
+            if(pos_x>xlimit):
+                pos_x = pos_x-(2*xlimit)-1
+        elif(nomor==1):   #jika randoman 1 maka arahnya ke kiri
+            pos_x = pos_x-1
+            if(pos_x<(-1*xlimit)):
+                pos_x = pos_x+(2*xlimit)+1
+        elif(nomor==2):   #jika randoman 2 maka arahnya ke atas
+            pos_y = pos_y+1
+            if(pos_y>ylimit):
+                pos_y = pos_y-(2*ylimit)-1
+        else:             #jika randoman 3/lainya maka arahnya ke bawah
+            pos_y = pos_y-1
+            if(pos_y<(-1*ylimit)):
+                pos_y = pos_y+(2*ylimit)+1
+        self.pos.append([pos_x,pos_y])
+        self.array_warna.append(self.warna)
